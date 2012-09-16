@@ -2,10 +2,10 @@
 # Prints the current weather in Celsius, Fahrenheits or lord Kelvins. The forecast is cached and updated with a period of $update_period.
 
 # You location. Find a string that works for you by Googling on "weather in <location-string>"
-location="Lund, Sweden"
+location="Minneapolis, MN"
 
 # Can be any of {c,f,k}.
-unit="c"
+unit="f"
 
 tmp_file="/tmp/tmux-powerline_weather.txt"
 
@@ -121,5 +121,5 @@ if [ -n "$degrees" ]; then
 	fi
 	unit_upper=$(echo "$unit" | tr '[cfk]' '[CFK]')
 	condition_symbol=$(get_condition_symbol "$conditions")
-	echo "${condition_symbol} ${degrees}°${unit_upper}"
+	echo "${condition_symbol} ${degrees}°"
 fi

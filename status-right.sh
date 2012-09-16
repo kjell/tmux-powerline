@@ -26,8 +26,8 @@ pwd+=(["separator"]="${separator_left_bold}")
 #register_segment "pwd"
 
 declare -A mail_count
-mail_count+=(["script"]="${segments_path}/maildir_count.sh")
-#mail_count+=(["script"]="${segments_path}/apple_mail_count.sh")
+# mail_count+=(["script"]="${segments_path}/maildir_count.sh")
+mail_count+=(["script"]="${segments_path}/apple_mail_count.sh")
 mail_count+=(["foreground"]="white")
 mail_count+=(["background"]="red")
 mail_count+=(["separator"]="${separator_left_bold}")
@@ -75,14 +75,14 @@ fi
 battery+=(["foreground"]="colour127")
 battery+=(["background"]="colour137")
 battery+=(["separator"]="${separator_left_bold}")
-#register_segment "battery"
+register_segment "battery"
 
 declare -A weather
 weather+=(["script"]="${segments_path}/weather.sh")
 weather+=(["foreground"]="colour255")
 weather+=(["background"]="colour37")
 weather+=(["separator"]="${separator_left_bold}")
-register_segment "weather"
+# register_segment "weather"
 
 declare -A xkb_layout
 if [ "$PLATFORM" == "linux" ]; then
@@ -106,7 +106,7 @@ date_full+=(["foreground"]="colour136")
 date_full+=(["background"]="colour235")
 date_full+=(["separator"]="${separator_left_thin}")
 date_full+=(["separator_fg"]="default")
-register_segment "date_full"
+# register_segment "date_full"
 
 declare -A time
 time+=(["script"]="${segments_path}/time.sh")

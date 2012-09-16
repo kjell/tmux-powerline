@@ -43,7 +43,7 @@ if [ "$PLATFORM" == "linux" ]; then
 	#now_playing+=(["script"]="${segments_path}/np_banshee.sh")
 	#now_playing+=(["script"]="${segments_path}/np_audacious.sh")
 elif [ "$PLATFORM" == "mac" ]; then
-	now_playing+=(["script"]="${segments_path}/np_itunes_mac.sh")
+	now_playing+=(["script"]="${segments_path}/np_itunes_macruby.rb")
 fi
 if [[ ${now_playing["script"]} ]]; then
 	now_playing+=(["foreground"]="colour37")

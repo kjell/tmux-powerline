@@ -116,6 +116,14 @@ time+=(["separator"]="${separator_left_thin}")
 time+=(["separator_fg"]="default")
 register_segment "time"
 
+declare -A pomux
+pomux+=(["script"]="${segments_path}/pomux.sh")
+pomux+=(["foreground"]="colour111")
+pomux+=(["background"]="colour235")
+pomux+=(["separator"]="${separator_left_thin}")
+pomux+=(["separator_fg"]="default")
+register_segment "pomux"
+
 # Print the status line in the order of registration above.
 print_status_line_right
 

@@ -2,6 +2,7 @@
 
 HEART_CONNECTED=♥
 HEART_DISCONNECTED=♡
+THRESHOLD=45
 
 case $(uname -s) in
     "Darwin")
@@ -19,13 +20,17 @@ case $(uname -s) in
                     export extconnect=$value;;
             esac
             if [[ -n $maxcap && -n $curcap && -n $extconnect ]]; then
-                if [[ "$curcap" == "$maxcap" ]]; then
+                export percent=$(( 100 * $curcap / $maxcap ))
+                if [[ "$curcap" == "$maxcap" ||  "$percent" -ge "$THRESHOLD"  ]]; then
                     exit
                 fi
+                # if [[ "$percent" -le "$THRESHOLD" ]]; then
+                    # exit
+                # fi
                 if [[ "$extconnect" == "Yes" ]]; then
-                    echo $HEART_CONNECTED $(( 100 * $curcap / $maxcap ))"%"
+                    echo $HEART_CONNECTED $percent"%"
                 else
-                    echo $HEART_DISCONNECTED $(( 100 * $curcap / $maxcap ))"%"
+                    echo $HEART_DISCONNECTED $percent"%"
                 fi
                 break
             fi

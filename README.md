@@ -3,10 +3,10 @@ This is a set of scripts (segments) for making a nice and dynamic tmux statusbar
 
 The following segments exists for now:
 * LAN & WAN IP addresses.
-* Now Playing for MPD, Spotify (GNU/Linux native or wine, OS X), iTunes (OS X), Rhythmbox, Banshee and Audacious.
-* New mail count for Maildir and Apple Mail.
+* Now Playing for MPD, Spotify (GNU/Linux native or wine, OS X), iTunes (OS X), Rhythmbox, Banshee, MOC, and Audacious.
+* New mail count for GMail, Maildir and Apple Mail.
 * GNU/Linux and Macintosh OS X battery status (uses [richo/dotfiles/bin/battery](https://github.com/richoH/dotfiles/blob/master/bin/battery)).
-* Weather in Celsius, Fahrenheit and Kelvin using Google's weather API.
+* Weather in Celsius, Fahrenheit and Kelvin using Yahoo Weather.
 * System load, cpu usage and uptime.
 * Git, SVN and Mercurial branch in CWD.
 * Date and time.
@@ -51,14 +51,15 @@ Requirements for the lib to work are:
 
 * Recent tmux version
 * `bash --version` >= 4.0
-* A patched font. Follow instructions at [Lokaltog/vim-powerline/fontpatcher](https://github.com/Lokaltog/vim-powerline/tree/develop/fontpatcher).
+* A patched font. Follow instructions at [Lokaltog/vim-powerline/fontpatcher](https://github.com/Lokaltog/vim-powerline/tree/develop/fontpatcher) or [download](https://github.com/Lokaltog/vim-powerline/wiki/Patched-fonts) a new one.
 
 ## Segment Requirements
 Requirements for some segments. You only need to fullfill the requirements for those segments you want to use.
 
-* WAN IP: curl
+* WAN IP: curl, bc
 * MPD now playing: [libmpdclient](http://sourceforge.net/projects/musicpd/files/libmpdclient/)
 * xkb_layout: X11, XKB
+* GMail count: wget.
 
 ## OS X specific requirements
 
@@ -125,7 +126,7 @@ Some segments e.g. cwd and cvs_branch needs to find the current working director
 PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#I_#P") "$PWD")'
 ```
 
-You can toggle the visibility of the statusbars by adding the following to you `~/.tmux.conf`:
+You can toggle the visibility of the statusbars by adding the following to your `~/.tmux.conf`:
 
 ```vim
 bind C-[ run '~/path/to/tmux-powerline/mute_statusbar.sh left'		# Mute left statusbar.
